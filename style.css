@@ -1,21 +1,21 @@
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-  --bg-primary: #ffffff;
-  --bg-secondary: #f8f9fa;
-  --bg-card: #ffffff;
-  --bg-card-hover: #f8f9fa;
-  --border: #e8e8e8;
-  --border-accent: #d0d0d0;
-  --text-primary: #1a1a1a;
-  --text-secondary: #5a5a5a;
-  --text-muted: #8a8a8a;
-  --accent: #1b6dd9;
-  --accent-dim: rgba(27, 109, 217, 0.08);
-  --accent-glow: rgba(27, 109, 217, 0.15);
-  --accent-subtle: rgba(27, 109, 217, 0.5);
-  --accent-secondary: #0d51cc;
-  --accent-secondary-dim: rgba(27, 109, 217, 0.12);
+  --bg-primary: #0f1117;
+  --bg-secondary: #161b22;
+  --bg-card: #0d1117;
+  --bg-card-hover: #161b22;
+  --border: #30363d;
+  --border-accent: #21262d;
+  --text-primary: #e6edf3;
+  --text-secondary: #8b949e;
+  --text-muted: #6e7681;
+  --accent: #58a6ff;
+  --accent-dim: rgba(88, 166, 255, 0.1);
+  --accent-glow: rgba(88, 166, 255, 0.2);
+  --accent-subtle: rgba(88, 166, 255, 0.6);
+  --accent-secondary: #42b5f4;
+  --accent-secondary-dim: rgba(66, 181, 244, 0.1);
   --font-display: '-apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif';
   --font-body: '-apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif';
   --font-mono: 'Menlo, monospace';
@@ -75,9 +75,9 @@ img { max-width: 100%; display: block; }
 }
 
 .navbar.scrolled {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: rgba(15, 17, 23, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-bottom-color: var(--border);
 }
 
@@ -1110,22 +1110,25 @@ section {
 
 .intro-name {
   font-family: var(--font-display);
-  font-size: clamp(56px, 10vw, 96px);
+  font-size: clamp(48px, 8vw, 86px);
   font-weight: 700;
-  line-height: 1.15;
-  letter-spacing: -1px;
+  line-height: 1.1;
+  letter-spacing: -1.2px;
   margin-bottom: 24px;
   opacity: 0;
   animation: slideInUp 0.8s 0.4s ease forwards;
-  color: var(--text-primary);
+  background: linear-gradient(135deg, #58a6ff 0%, #79c0ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .intro-title {
-  font-size: clamp(18px, 2.5vw, 28px);
+  font-size: clamp(16px, 2.2vw, 20px);
   font-weight: 400;
   color: var(--text-secondary);
   margin-bottom: 32px;
-  line-height: 1.5;
+  line-height: 1.6;
   opacity: 0;
   animation: slideInUp 0.8s 0.6s ease forwards;
   max-width: 700px;
@@ -1191,12 +1194,15 @@ section {
 
 .graph-title {
   font-family: var(--font-display);
-  font-size: clamp(40px, 5vw, 64px);
+  font-size: clamp(40px, 5vw, 56px);
   font-weight: 700;
   line-height: 1.2;
   margin-bottom: 16px;
-  color: var(--text-primary);
-  letter-spacing: -1px;
+  background: linear-gradient(135deg, #58a6ff 0%, #79c0ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -1.2px;
 }
 
 .graph-subtitle {
@@ -1207,14 +1213,14 @@ section {
 
 .graph-container {
   width: 100%;
-  height: 900px;
-  background: var(--bg-card);
+  height: 800px;
+  background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
   border: 1px solid var(--border);
-  border-radius: 12px;
+  border-radius: 8px;
   position: relative;
   overflow: hidden;
   margin-bottom: 40px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
 }
 
 .graph-container svg {
@@ -1279,12 +1285,12 @@ section {
   top: 0;
   width: 450px;
   height: 100vh;
-  background: var(--bg-card);
+  background: var(--bg-secondary);
   border-left: 1px solid var(--border);
   z-index: 2000;
   transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   overflow-y: auto;
-  box-shadow: -8px 0 24px rgba(0, 0, 0, 0.08);
+  box-shadow: -8px 0 32px rgba(0, 0, 0, 0.5);
 }
 
 .node-details.active {
@@ -1321,9 +1327,12 @@ section {
 
 .node-details-title {
   font-family: var(--font-display);
-  font-size: 32px;
+  font-size: 28px;
   font-weight: 700;
-  color: var(--text-primary);
+  background: linear-gradient(135deg, #58a6ff, #79c0ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   margin-bottom: 16px;
   line-height: 1.3;
 }
