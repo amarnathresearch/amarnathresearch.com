@@ -1,26 +1,26 @@
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-  --bg-primary: #0f1117;
-  --bg-secondary: #161b22;
-  --bg-card: #0d1117;
-  --bg-card-hover: #161b22;
-  --border: #30363d;
-  --border-accent: #444c56;
-  --text-primary: #e6edf3;
-  --text-secondary: #8b949e;
-  --text-muted: #6e7681;
-  --accent: #58a6ff;
-  --accent-dim: rgba(88, 166, 255, 0.08);
-  --accent-glow: rgba(88, 166, 255, 0.15);
-  --accent-subtle: rgba(88, 166, 255, 0.5);
-  --accent-secondary: #79c0ff;
-  --accent-secondary-dim: rgba(121, 192, 255, 0.08);
-  --font-display: 'Playfair Display', Georgia, serif;
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f8f9fa;
+  --border: #e8e8e8;
+  --border-accent: #d0d0d0;
+  --text-primary: #1a1a1a;
+  --text-secondary: #5a5a5a;
+  --text-muted: #8a8a8a;
+  --accent: #1b6dd9;
+  --accent-dim: rgba(27, 109, 217, 0.08);
+  --accent-glow: rgba(27, 109, 217, 0.15);
+  --accent-subtle: rgba(27, 109, 217, 0.5);
+  --accent-secondary: #0d51cc;
+  --accent-secondary-dim: rgba(27, 109, 217, 0.12);
+  --font-display: '-apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif';
   --font-body: '-apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif';
-  --font-mono: 'JetBrains Mono', 'Monaco', monospace;
-  --section-gap: 180px;
-  --container: 1120px;
+  --font-mono: 'Menlo, monospace';
+  --section-gap: 120px;
+  --container: 1200px;
 }
 
 html {
@@ -36,14 +36,14 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.6;
+  font-size: 16px;
 }
 
 body::before {
   content: '';
   position: fixed;
   inset: 0;
-  background: radial-gradient(ellipse at 20% 30%, rgba(88, 166, 255, 0.08) 0%, transparent 40%),
-              radial-gradient(ellipse at 80% 70%, rgba(121, 192, 255, 0.05) 0%, transparent 50%);
+  background: transparent;
   pointer-events: none;
   z-index: 0;
 }
@@ -56,7 +56,7 @@ img { max-width: 100%; display: block; }
 .container {
   max-width: var(--container);
   margin: 0 auto;
-  padding: 0 32px;
+  padding: 0 40px;
   position: relative;
   z-index: 1;
 }
@@ -75,7 +75,7 @@ img { max-width: 100%; display: block; }
 }
 
 .navbar.scrolled {
-  background: rgba(15, 17, 23, 0.8);
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-bottom-color: var(--border);
@@ -1068,12 +1068,13 @@ section {
 
 /* Replace hero with hero-intro */
 .hero-intro {
-  min-height: 100vh;
+  min-height: 90vh;
   display: flex;
   align-items: center;
   position: relative;
   overflow: hidden;
   padding-top: 70px;
+  padding-bottom: 60px;
 }
 
 .hero-intro::before {
@@ -1083,7 +1084,7 @@ section {
   right: -10%;
   width: 500px;
   height: 500px;
-  background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+  background: transparent;
   filter: blur(60px);
   animation: float 8s ease-in-out infinite;
   pointer-events: none;
@@ -1109,10 +1110,10 @@ section {
 
 .intro-name {
   font-family: var(--font-display);
-  font-size: clamp(48px, 8vw, 86px);
+  font-size: clamp(56px, 10vw, 96px);
   font-weight: 700;
-  line-height: 1.1;
-  letter-spacing: -0.5px;
+  line-height: 1.15;
+  letter-spacing: -1px;
   margin-bottom: 24px;
   opacity: 0;
   animation: slideInUp 0.8s 0.4s ease forwards;
@@ -1120,14 +1121,14 @@ section {
 }
 
 .intro-title {
-  font-size: clamp(16px, 2.2vw, 22px);
+  font-size: clamp(18px, 2.5vw, 28px);
   font-weight: 400;
   color: var(--text-secondary);
   margin-bottom: 32px;
-  line-height: 1.6;
+  line-height: 1.5;
   opacity: 0;
   animation: slideInUp 0.8s 0.6s ease forwards;
-  max-width: 600px;
+  max-width: 700px;
 }
 
 .intro-title strong {
@@ -1136,14 +1137,14 @@ section {
 }
 
 .intro-desc {
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.8;
   color: var(--text-secondary);
-  max-width: 620px;
-  margin-bottom: 24px;
+  max-width: 700px;
+  margin-bottom: 40px;
   opacity: 0;
   animation: slideInUp 0.8s 0.8s ease forwards;
-  font-weight: 300;
+  font-weight: 400;
 }
 
 .intro-stats {
@@ -1175,10 +1176,10 @@ section {
 
 /* KNOWLEDGE GRAPH */
 .graph-section {
-  min-height: 120vh;
-  padding: 80px 0;
+  min-height: 150vh;
+  padding: 100px 0 120px;
   position: relative;
-  background: rgba(22, 27, 34, 0.2);
+  background: var(--bg-secondary);
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
 }
@@ -1190,29 +1191,30 @@ section {
 
 .graph-title {
   font-family: var(--font-display);
-  font-size: clamp(32px, 4.5vw, 52px);
+  font-size: clamp(40px, 5vw, 64px);
   font-weight: 700;
   line-height: 1.2;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
   color: var(--text-primary);
-  letter-spacing: -0.5px;
+  letter-spacing: -1px;
 }
 
 .graph-subtitle {
-  font-size: 14px;
+  font-size: 16px;
   color: var(--text-secondary);
-  font-weight: 300;
+  font-weight: 400;
 }
 
 .graph-container {
   width: 100%;
-  height: 700px;
+  height: 900px;
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: 12px;
   position: relative;
   overflow: hidden;
-  margin-bottom: 32px;
+  margin-bottom: 40px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 .graph-container svg {
@@ -1273,16 +1275,16 @@ section {
 /* NODE DETAILS PANEL */
 .node-details {
   position: fixed;
-  right: -400px;
+  right: -450px;
   top: 0;
-  width: 400px;
+  width: 450px;
   height: 100vh;
-  background: var(--bg-secondary);
+  background: var(--bg-card);
   border-left: 1px solid var(--border);
   z-index: 2000;
   transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   overflow-y: auto;
-  box-shadow: -4px 0 16px rgba(0, 0, 0, 0.3);
+  box-shadow: -8px 0 24px rgba(0, 0, 0, 0.08);
 }
 
 .node-details.active {
@@ -1319,7 +1321,7 @@ section {
 
 .node-details-title {
   font-family: var(--font-display);
-  font-size: 24px;
+  font-size: 32px;
   font-weight: 700;
   color: var(--text-primary);
   margin-bottom: 16px;
@@ -1328,19 +1330,19 @@ section {
 
 .node-details-type {
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 11px;
   color: var(--accent);
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 1.2px;
   margin-bottom: 20px;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .node-details-body {
-  font-size: 14px;
-  line-height: 1.7;
+  font-size: 15px;
+  line-height: 1.8;
   color: var(--text-secondary);
-  font-weight: 300;
+  font-weight: 400;
 }
 
 .node-details-body h3 {
@@ -1465,18 +1467,18 @@ section {
 /* Responsive adjustments */
 @media (max-width: 900px) {
   .graph-container {
-    height: 500px;
+    height: 700px;
   }
   
   .node-details {
-    width: 350px;
-    right: -350px;
+    width: 380px;
+    right: -380px;
   }
 }
 
 @media (max-width: 600px) {
   .graph-container {
-    height: 400px;
+    height: 600px;
   }
   
   .node-details {
@@ -1486,5 +1488,9 @@ section {
   
   .intro-stats {
     gap: 24px;
+  }
+  
+  .graph-section {
+    min-height: 100vh;
   }
 }

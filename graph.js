@@ -1,13 +1,13 @@
 // Knowledge Graph Data Structure
 const graphData = {
   nodes: [
-    { id: 1, label: "Amarnath R.", type: "person", x: 500, y: 350 },
+    { id: 1, label: "Amarnath R.", type: "person", x: 600, y: 450 },
     { id: 2, label: "PhD", type: "education", x: 250, y: 150 },
-    { id: 3, label: "M.Tech", type: "education", x: 150, y: 250 },
-    { id: 4, label: "Publications", type: "research", x: 650, y: 150 },
-    { id: 5, label: "Experience", type: "experience", x: 750, y: 250 },
-    { id: 6, label: "Research Areas", type: "research", x: 650, y: 450 },
-    { id: 7, label: "Tech Stack", type: "skills", x: 250, y: 450 },
+    { id: 3, label: "M.Tech", type: "education", x: 100, y: 300 },
+    { id: 4, label: "Publications", type: "research", x: 800, y: 150 },
+    { id: 5, label: "Experience", type: "experience", x: 950, y: 350 },
+    { id: 6, label: "Research", type: "research", x: 800, y: 700 },
+    { id: 7, label: "Tech Stack", type: "skills", x: 250, y: 750 },
   ],
   links: [
     { source: 1, target: 2 },
@@ -176,19 +176,20 @@ function initializeGraph() {
   const width = container.clientWidth;
   const height = container.clientHeight;
   
-  // Force simulation
+  // Force simulation with adjusted strength for larger canvas
   const simulation = d3.forceSimulation(graphData.nodes)
-    .force('link', d3.forceLink(graphData.links).id(d => d.id).distance(120))
-    .force('charge', d3.forceManyBody().strength(-300))
+    .force('link', d3.forceLink(graphData.links).id(d => d.id).distance(150))
+    .force('charge', d3.forceManyBody().strength(-500))
     .force('center', d3.forceCenter(width / 2, height / 2))
-    .force('collision', d3.forceCollide().radius(40));
+    .force('collision', d3.forceCollide().radius(60));
 
   // Create links
   const link = svg.selectAll('.link')
     .data(graphData.links)
     .enter()
     .append('line')
-    .attr('class', 'link');
+    .attr('class', 'link')
+    .attr('stroke-width', 2);
 
   // Create nodes
   const node = svg.selectAll('.node')
@@ -201,10 +202,10 @@ function initializeGraph() {
       .on('drag', dragged)
       .on('end', dragEnded));
 
-  // Add circles
+  // Add circles - larger nodes
   node.append('circle')
     .attr('class', 'node-circle')
-    .attr('r', d => d.id === 1 ? 25 : 18);
+    .attr('r', d => d.id === 1 ? 32 : 24);
 
   // Add labels
   node.append('text')
