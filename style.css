@@ -1,24 +1,29 @@
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-  --bg-dark: #0a0a0f;
-  --bg-darker: #050507;
-  --bg-glass: rgba(20, 20, 30, 0.4);
-  --bg-card: rgba(30, 30, 45, 0.5);
-  --border-light: rgba(255, 255, 255, 0.08);
-  --border-accent: rgba(139, 92, 246, 0.3);
-  --text-primary: #ffffff;
-  --text-secondary: #c0c0e0;
-  --text-muted: #7a7a9e;
-  --accent-primary: #8b5cf6;
-  --accent-secondary: #5de4c7;
-  --accent-warm: #fbbf24;
-  --accent-pink: #fb7185;
-  --font-display: 'Syne', sans-serif;
-  --font-body: 'Inter', sans-serif;
-  --font-mono: 'IBM Plex Mono', monospace;
-  --section-gap: 200px;
-  --container: 1240px;
+  --bg-primary: #0a0a0c;
+  --bg-secondary: #111114;
+  --bg-card: #16161a;
+  --bg-card-hover: #1c1c21;
+  --border: #2a2a30;
+  --border-accent: #3a3a44;
+  --text-primary: #f0f0f2;
+  --text-secondary: #9a9aab;
+  --text-muted: #66667a;
+  --accent: #5de4c7;
+  --accent-dim: rgba(93, 228, 199, 0.12);
+  --accent-glow: rgba(93, 228, 199, 0.06);
+  --accent-secondary: #7c5cfc;
+  --accent-secondary-dim: rgba(124, 92, 252, 0.1);
+  --accent-warm: #fcc45c;
+  --accent-warm-dim: rgba(252, 196, 92, 0.1);
+  --accent-rose: #fb7185;
+  --accent-rose-dim: rgba(251, 113, 133, 0.1);
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'DM Sans', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --section-gap: 180px;
+  --container: 1120px;
 }
 
 html {
