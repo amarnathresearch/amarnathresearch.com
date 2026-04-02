@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Syne:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://d3js.org/d3.v7.min.js"></script>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -17,12 +18,8 @@
   <div class="navbar-inner">
     <a href="#" class="nav-logo">amarnath<span>research</span>.com</a>
     <ul class="nav-links" id="navLinks">
-      <li><a href="#impact" onclick="closeMenu()">Impact</a></li>
-      <li><a href="#research" onclick="closeMenu()">Research</a></li>
-      <li><a href="#experience" onclick="closeMenu()">Experience</a></li>
-      <li><a href="#fundamentals" onclick="closeMenu()">Fundamentals</a></li>
-      <li><a href="#techstack" onclick="closeMenu()">Tech Stack</a></li>
-      <li><a href="#demos" onclick="closeMenu()">Demos</a></li>
+      <li><a href="#graph" onclick="closeMenu()">Knowledge Graph</a></li>
+      <li><a href="#publications" onclick="closeMenu()">All Publications</a></li>
       <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
     </ul>
     <button class="nav-hamburger" id="hamburger" aria-label="Menu">
@@ -31,491 +28,45 @@
   </div>
 </nav>
 
-<!-- HERO -->
-<section class="hero" id="hero">
+<!-- HERO / INTRO -->
+<section class="hero-intro">
   <div class="container">
-    <div class="hero-content">
-      <div class="hero-eyebrow">// Research &middot; Architecture &middot; Scale</div>
-      <h1 class="hero-name">Dr. Amarnath R<span class="accent-dot">.</span></h1>
-      <p class="hero-title"><strong>Principal AI Architect</strong> &nbsp;|&nbsp; Ph.D. in Computer Vision &nbsp;|&nbsp; GenAI &amp; Multi-Agent Systems</p>
-      <p class="hero-desc">Bridging deep academic research with enterprise-scale engineering. I architect Agentic AI systems and Deep Learning pipelines that move beyond POCs into production-grade, high-ROI innovation.</p>
-      <div class="hero-stats">
-        <div><div class="hero-stat-num">15+</div><div class="hero-stat-label">Years Experience</div></div>
-        <div><div class="hero-stat-num">$3M+</div><div class="hero-stat-label">Funding Secured</div></div>
-        <div><div class="hero-stat-num">50+</div><div class="hero-stat-label">Global Clients</div></div>
-        <div><div class="hero-stat-num">21+</div><div class="hero-stat-label">Publications</div></div>
-      </div>
-      <div class="hero-actions">
-        <a href="#research" class="btn btn-primary">View Research</a>
-        <a href="https://www.linkedin.com/in/amarnathresearch/" target="_blank" rel="noopener" class="btn btn-outline">Connect on LinkedIn</a>
+    <div class="intro-content">
+      <div class="intro-eyebrow">// Research &middot; Architecture &middot; Scale</div>
+      <h1 class="intro-name">Dr. Amarnath R<span class="accent-dot">.</span></h1>
+      <p class="intro-title"><strong>Principal AI Architect</strong> &nbsp;|&nbsp; Ph.D. in Computer Vision &nbsp;|&nbsp; GenAI &amp; Multi-Agent Systems</p>
+      <p class="intro-desc">Bridging deep academic research with enterprise-scale engineering. Explore my journey, publications, and expertise through the interactive knowledge graph below.</p>
+      <div class="intro-stats">
+        <div><div class="stat-num">15+</div><div class="stat-label">Years</div></div>
+        <div><div class="stat-num">$3M+</div><div class="stat-label">Funding</div></div>
+        <div><div class="stat-num">50+</div><div class="stat-label">Clients</div></div>
+        <div><div class="stat-num">21+</div><div class="stat-label">Publications</div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- AT A GLANCE -->
-<section class="section-alt" id="impact">
-  <div class="container">
-    <div class="reveal">
-      <div class="section-label">01 &mdash; Impact</div>
-      <h2 class="section-heading">At a Glance</h2>
-    </div>
-    <div class="impact-grid">
-      <div class="impact-card reveal">
-        <span class="impact-icon">&#x1F4B0;</span>
-        <h3>Funding &amp; Leadership</h3>
-        <p>Principal Investigator for a COVID-19 thermal screening AI project, securing <span class="metric">$3M+</span> in DST (Govt. of India) and VC funding.</p>
-      </div>
-      <div class="impact-card reveal">
-        <span class="impact-icon">&#x2699;&#xFE0F;</span>
-        <h3>Enterprise Scale</h3>
-        <p>Architected LLM-powered automation platforms for <span class="metric">50+</span> global clients (including Bosch), delivering <span class="metric">40%</span> operational efficiency gains.</p>
-      </div>
-      <div class="impact-card reveal">
-        <span class="impact-icon">&#x1F680;</span>
-        <h3>Entrepreneurship</h3>
-        <p>Founder of <span class="metric">Codeidea.in</span> &mdash; competitive coding &amp; hackathon platform with 500+ students. Acquired by IVISLabs Pvt. Ltd.</p>
-      </div>
-      <div class="impact-card reveal">
-        <span class="impact-icon">&#x1F9E0;</span>
-        <h3>Core Tech Stack</h3>
-        <p><span class="metric">LangGraph</span>, <span class="metric">LangSmith</span>, <span class="metric">OpenClaw</span>, <span class="metric">PyTorch</span>, <span class="metric">Transformers</span>, <span class="metric">Kubernetes</span>, <span class="metric">AWS</span>.</p>
-      </div>
-    </div>
+<!-- KNOWLEDGE GRAPH -->
+<section class="graph-section" id="graph">
+  <div class="graph-header">
+    <h2 class="graph-title">Knowledge Graph</h2>
+    <p class="graph-subtitle">Click on any node to explore connections • Drag to navigate</p>
+  </div>
+  <div id="graph-container" class="graph-container"></div>
+  <div id="node-details" class="node-details">
+    <button class="details-close">&times;</button>
+    <div class="details-content"></div>
   </div>
 </section>
 
-<!-- RESEARCH -->
-<section id="research">
+<!-- PUBLICATIONS REFERENCE -->
+<section id="publications" class="publications-section">
   <div class="container">
     <div class="reveal">
-      <div class="section-label">02 &mdash; Research</div>
-      <h2 class="section-heading">Academic &amp; Applied Research</h2>
-      <p class="section-intro">My Ph.D. thesis, <em>Segmentation in Compressed Document Images</em> (University of Mysore, 2019), forms the foundation of my applied work in visual AI and OCR pipelines.</p>
+      <div class="section-label">Publications</div>
+      <h2 class="section-heading">All Publications (21)</h2>
     </div>
-
-    <div class="research-tabs reveal">
-      <button class="research-tab active" data-tab="highlights">Highlights</button>
-      <button class="research-tab" data-tab="publications">All Publications (21)</button>
-    </div>
-
-    <div class="research-panel active" id="tab-highlights">
-      <div class="research-item reveal">
-        <span class="tag tag-preprint">arXiv 2026 &middot; Preprint</span>
-        <h3>HMS-VesselNet: Hierarchical Multi-Scale Attention Network with Topology-Preserving Loss for Retinal Vessel Segmentation</h3>
-        <p>A hierarchical multi-scale network processing fundus images across four parallel branches at different resolutions, combining Dice, BCE, and centerline Dice losses with hard example mining. Achieves mean Dice of 88.72%, Sensitivity 90.78%, and AUC 98.25% across DRIVE, STARE, and CHASE_DB1.</p>
-        <div class="venue">arXiv:2603.21891 [eess.IV] &middot; 19 pages, 14 figures, 8 tables</div>
-      </div>
-      <div class="research-item reveal">
-        <span class="tag tag-review">Under Review</span>
-        <h3>Input Resolution in Retinal Vessel Segmentation</h3>
-        <p>An empirical study across five datasets quantifying the structural loss of microvascular details during downsampling.</p>
-        <div class="venue">Under Review: JIIM</div>
-      </div>
-      <div class="research-item reveal">
-        <span class="tag tag-published">IEEE Access &middot; 2024</span>
-        <h3>Hard Exudates Segmentation in Diabetic Retinopathy Using DiaRetDB1</h3>
-        <p>Published in IEEE Access, vol. 12, 2024. DOI: 10.1109/ACCESS.2024.3455433</p>
-        <div class="venue">IEEE Access</div>
-      </div>
-      <div class="research-item reveal">
-        <span class="tag tag-published">SCIE &middot; SCOPUS &middot; DBLP</span>
-        <h3>Automatic Localization and Extraction of Tables from Handheld Mobile-Camera Captured Handwritten Document Images</h3>
-        <p>Published in Journal of Intelligent &amp; Fuzzy Systems (JIFS), vol. 36, no. 3, pp. 2527-2544, 2019.</p>
-        <div class="venue">Journal of Intelligent &amp; Fuzzy Systems</div>
-      </div>
-      <div class="research-item reveal">
-        <span class="tag tag-applied">Applied Research</span>
-        <h3>Automated Content Extraction</h3>
-        <p>Developed advanced OCR and NLP models reducing manual cataloguing effort by 70%+ for e-commerce pipelines at Amazon, Flipkart, and LiveAuctioneer.</p>
-      </div>
-    </div>
-
-    <div class="research-panel" id="tab-publications">
-      <ul class="pub-list reveal">
-        <li><span class="pub-year">2026</span> <span class="pub-title">HMS-VesselNet: Hierarchical Multi-Scale Attention Network with Topology-Preserving Loss for Retinal Vessel Segmentation.</span> Amarnath R. arXiv:2603.21891.</li>
-        <li><span class="pub-year">2024</span> <span class="pub-title">Hard Exudates Segmentation in Diabetic Retinopathy Using DiaRetDB1.</span> Ma Yinghua, Yang Heng, R. Amarnath, Zeng Hui. IEEE Access, vol. 12.</li>
-        <li><span class="pub-year">2023</span> <span class="pub-title">Pruning distorted images in MNIST handwritten digits.</span> Amarnath R., Vinay Kumar V. CoRR, abs/2307.14343.</li>
-        <li><span class="pub-year">2022</span> <span class="pub-title">Segmentation of pectoral muscle in mammograms using granular computing.</span> B. V. Divyashree, Amarnath R., et al. J. of Information Technology Research, vol. 15, no. 1.</li>
-        <li><span class="pub-year">2021</span> <span class="pub-title">Detection and classification of hard exudates in retinal images.</span> Thamer Al Sariera, Lalitha Rangarajan, Amarnath R. J. of Intelligent &amp; Fuzzy Systems, vol. 38, no. 2.</li>
-        <li><span class="pub-year">2021</span> <span class="pub-title">An experimental study on the effect of noise in CCITT Group 4 compressed document images.</span> A. N. Sukumara et al. Advances in AI and Data Engineering.</li>
-        <li><span class="pub-year">2019</span> <span class="pub-title">Regression-based sub-image matching methodology for recognizing an Indian paper bill.</span> Amarnath R., P. Nagabhushan. IJEEA.</li>
-        <li><span class="pub-year">2019</span> <span class="pub-title">Word and character segmentation directly in run-length compressed handwritten document images.</span> Amarnath R., P. Nagabhushan, Mohammed Javed. CoRR.</li>
-        <li><span class="pub-year">2019</span> <span class="pub-title">Automatic localization and extraction of tables from handheld mobile-camera captured handwritten document images.</span> Amarnath R. et al. JIFS, vol. 36, no. 3. (SCIE, SCOPUS, DBLP)</li>
-        <li><span class="pub-year">2018</span> <span class="pub-title">Text line segmentation in compressed representation of handwritten document using tunneling algorithm.</span> Amarnath R., P. Nagabhushan. IJISAE, vol. 6, no. 4.</li>
-        <li><span class="pub-year">2018</span> <span class="pub-title">Novel approach to locate region of interest in mammograms for breast cancer.</span> B. V. Divyashree, Amarnath R. et al. IJISAE, vol. 6, no. 3.</li>
-        <li><span class="pub-year">2018</span> <span class="pub-title">Enabling text-line segmentation in run-length encoded handwritten document image using entropy-driven incremental learning.</span> CVIP-2018, IIIT Jabalpur. (IAPR Endorsed)</li>
-        <li><span class="pub-year">2018</span> <span class="pub-title">Entropy-based approach for enabling text line segmentation in handwritten documents.</span> Springer LNNS, DAL'18, Mysore.</li>
-        <li><span class="pub-year">2018</span> <span class="pub-title">Line detection in run-length encoded document images using monotonically increasing graph model.</span> IEEE ICACCI, Bangalore.</li>
-        <li><span class="pub-year">2017</span> <span class="pub-title">Segmentation of handwritten text document directly in compressed image version.</span> SSDA, Jaipur. (IAPR Endorsed)</li>
-        <li><span class="pub-year">2017</span> <span class="pub-title">Spotting separator points at line terminals in compressed document images for text-line segmentation.</span> IJCA, vol. 172, no. 4.</li>
-        <li><span class="pub-year">2009</span> <span class="pub-title">Fingerprint Biometrics with movement enhanced technique.</span> NCCCIS-2009, Coimbatore.</li>
-        <li><span class="pub-year">2009</span> <span class="pub-title">Image Processing over IP Networks.</span> NCCCIS-2009, Coimbatore.</li>
-        <li><span class="pub-year">2008</span> <span class="pub-title">Magic at Zero desk-space: Designing and implementing an advanced human-computer interaction system.</span> MNGSA, Karunya University.</li>
-        <li><span class="pub-year">2008</span> <span class="pub-title">An optimized string searching algorithmic technique.</span> MNGSA, Karunya University.</li>
-        <li><span class="pub-year">2008</span> <span class="pub-title">Designing a novel web-based e-learning authoring tool for dynamic content management.</span> MNGSA, Karunya University.</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- EXPERIENCE -->
-<section class="section-alt" id="experience">
-  <div class="container">
-    <div class="reveal">
-      <div class="section-label">03 &mdash; Experience</div>
-      <h2 class="section-heading">Career Timeline</h2>
-      <p class="section-intro">15+ years defining AI strategy, system architecture, and product roadmaps for enterprise and government clients.</p>
-    </div>
-    <div class="exp-timeline">
-
-      <div class="exp-item reveal">
-        <h3>Founder &amp; Developer</h3>
-        <div class="exp-company">Codeidea.in (Acquired by IVISLabs Pvt. Ltd.)</div>
-        <div class="exp-period">Jun 2024 &ndash; Jul 2025 &middot; Sabbatical</div>
-        <ul class="exp-bullets">
-          <li>Built competitive coding and problem-solving platform for students and developer communities</li>
-          <li>Algorithm visualizations and real-time problem-solving environments</li>
-          <li>Organized 3+ hackathons engaging 500+ students across multiple universities</li>
-        </ul>
-      </div>
-      <div class="exp-item reveal">
-        <h3>Solutions Architect</h3>
-        <div class="exp-company">HCL Technologies Ltd.</div>
-        <div class="exp-period">Jul 2022 &ndash; May 2024 &middot; Chennai</div>
-        <ul class="exp-bullets">
-          <li>Architected AI-powered enterprise applications for 50+ global clients, integrating LLMs and GenAI</li>
-          <li>Partnered with Bosch on LLM-powered automation &mdash; intelligent document processing and knowledge retrieval</li>
-          <li>40% operational efficiency improvement; 80% customer satisfaction increase via real-time AI analytics</li>
-          <li>Led cross-functional teams of 8+ engineers deploying production-ready AI systems</li>
-        </ul>
-      </div>
-      <div class="exp-item reveal">
-        <h3>Principal Technical Architect</h3>
-        <div class="exp-company">Cocoslabs Innovative Solutions Pvt. Ltd.</div>
-        <div class="exp-period">Mar 2020 &ndash; Dec 2020 &middot; Bengaluru</div>
-        <ul class="exp-bullets">
-          <li>Principal Investigator for COVID-19 thermal screening AI, securing $1M+ DST funding</li>
-          <li>Real-time video analytics pipeline &mdash; 10,000+ daily users, 99.9% uptime</li>
-          <li>Collaborated with L&amp;T on intelligent tollbooth vehicle classification &mdash; 3-camera ANPR pipeline</li>
-        </ul>
-      </div>
-      <div class="exp-item reveal">
-        <h3>Machine Learning Lead</h3>
-        <div class="exp-company">Text Mercato Solutions Pvt. Ltd.</div>
-        <div class="exp-period">Jun 2019 &ndash; Feb 2020 &middot; Bengaluru</div>
-        <ul class="exp-bullets">
-          <li>Product catalogue automation for Amazon, Flipkart, LiveAuctioneer &mdash; contributed to $2M seed funding</li>
-          <li>10x inference acceleration and 35% cloud cost reduction through ML pipeline optimization</li>
-          <li>Advanced OCR and NLP models reducing manual cataloguing effort by 70%+</li>
-        </ul>
-      </div>
-      <div class="exp-item reveal">
-        <h3>Ph.D., Computer Science</h3>
-        <div class="exp-company">University of Mysore</div>
-        <div class="exp-period">Jan 2016 &ndash; May 2019</div>
-        <p>Thesis: Segmentation in Compressed Document Images. Published 10+ papers in peer-reviewed journals and conferences (SCIE, SCOPUS, IEEE, IAPR).</p>
-      </div>
-      <div class="exp-item reveal">
-        <h3>M.Tech., Computer Cognition &amp; Technology</h3>
-        <div class="exp-company">University of Mysore</div>
-        <div class="exp-period">Sep 2011 &ndash; May 2013</div>
-        <p>Thesis: Indian Paper Currency Recognition Systems for Visually Impaired.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- EDUCATION -->
-<section id="education">
-  <div class="container">
-    <div class="reveal">
-      <div class="section-label">04 &mdash; Education</div>
-      <h2 class="section-heading">Academic Foundation</h2>
-    </div>
-    <div class="edu-grid">
-      <div class="edu-card reveal">
-        <div class="edu-degree">Doctorate</div>
-        <h3>Ph.D., Computer Science</h3>
-        <div class="edu-inst">University of Mysore &middot; 2016 &ndash; 2019</div>
-        <div class="edu-thesis">Thesis: Segmentation in Compressed Document Images. Novel research on document image segmentation, layout analysis, and recognition systems directly applied to production document AI systems.</div>
-      </div>
-      <div class="edu-card reveal">
-        <div class="edu-degree">Master's</div>
-        <h3>M.Tech., Computer Cognition &amp; Technology</h3>
-        <div class="edu-inst">University of Mysore &middot; 2011 &ndash; 2013</div>
-        <div class="edu-thesis">Thesis: Indian Paper Currency Recognition Systems for Visually Impaired.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CS FUNDAMENTALS -->
-<section class="section-alt" id="fundamentals">
-  <div class="container">
-    <div class="reveal">
-      <div class="section-label">05 &mdash; Fundamentals</div>
-      <h2 class="section-heading">CS Fundamentals &amp; Problem Solving</h2>
-      <p class="section-intro">Strong foundation in data structures, algorithms, system design, and operating systems &mdash; the bedrock of building production-grade AI systems at scale.</p>
-    </div>
-
-    <!-- DSA -->
-    <div class="fund-category-title reveal">Data Structures &amp; Algorithms</div>
-    <div class="fund-grid">
-      <a href="https://github.com/amarnathresearch/dsa-solutions" target="_blank" rel="noopener" class="fund-card reveal">
-        <span class="fund-icon">&#x1F333;</span>
-        <h3>Trees &amp; Binary Search Trees</h3>
-        <p>Balanced BSTs, AVL rotations, segment trees, Fenwick trees. LCA, serialization, and range queries.</p>
-        <div class="fund-tags"><span class="ftag-dsa">Trees</span><span class="ftag-dsa">BST</span><span class="ftag-dsa">Segment Tree</span></div>
-      </a>
-      <a href="https://github.com/amarnathresearch/dsa-solutions" target="_blank" rel="noopener" class="fund-card reveal">
-        <span class="fund-icon">&#x1F517;</span>
-        <h3>Graph Algorithms</h3>
-        <p>BFS/DFS, Dijkstra, Bellman-Ford, topological sort, strongly connected components, network flow, minimum spanning trees.</p>
-        <div class="fund-tags"><span class="ftag-dsa">BFS/DFS</span><span class="ftag-dsa">Dijkstra</span><span class="ftag-dsa">MST</span></div>
-      </a>
-      <a href="https://github.com/amarnathresearch/dsa-solutions" target="_blank" rel="noopener" class="fund-card reveal">
-        <span class="fund-icon">&#x1F4D0;</span>
-        <h3>Dynamic Programming</h3>
-        <p>Memoization vs tabulation, knapsack variants, LCS/LIS, matrix chain multiplication, DP on trees and graphs.</p>
-        <div class="fund-tags"><span class="ftag-dp">Memoization</span><span class="ftag-dp">Knapsack</span><span class="ftag-dp">LCS</span></div>
-      </a>
-      <a href="https://github.com/amarnathresearch/dsa-solutions" target="_blank" rel="noopener" class="fund-card reveal">
-        <span class="fund-icon">&#x26A1;</span>
-        <h3>Sorting &amp; Searching</h3>
-        <p>Quicksort, mergesort, heapsort analysis. Binary search on answer, two-pointer, sliding window techniques.</p>
-        <div class="fund-tags"><span class="ftag-dsa">Binary Search</span><span class="ftag-dsa">Two Pointer</span></div>
-      </a>
-      <a href="https://github.com/amarnathresearch/dsa-solutions" target="_blank" rel="noopener" class="fund-card reveal">
-        <span class="fund-icon">&#x1F9E9;</span>
-        <h3>Hashing &amp; String Algorithms</h3>
-        <p>Hash maps, collision resolution, Rabin-Karp, KMP pattern matching, trie-based solutions. Published: "Optimized string searching algorithmic technique" (2008).</p>
-        <div class="fund-tags"><span class="ftag-dsa">Rabin-Karp</span><span class="ftag-dsa">KMP</span><span class="ftag-dsa">Trie</span></div>
-      </a>
-      <a href="https://github.com/amarnathresearch/dsa-solutions" target="_blank" rel="noopener" class="fund-card reveal">
-        <span class="fund-icon">&#x1F3D4;&#xFE0F;</span>
-        <h3>Greedy &amp; Divide-and-Conquer</h3>
-        <p>Activity selection, Huffman coding, interval scheduling. Master theorem analysis, recurrence relations.</p>
-        <div class="fund-tags"><span class="ftag-dsa">Greedy</span><span class="ftag-dsa">D&amp;C</span></div>
-      </a>
-    </div>
-
-    <!-- System Design -->
-    <div class="fund-category-title reveal">System Design &amp; Architecture</div>
-    <div class="fund-grid">
-      <a href="https://github.com/amarnathresearch/system-design" target="_blank" rel="noopener" class="fund-card reveal">
-        <span class="fund-icon">&#x1F3D7;&#xFE0F;</span>
-        <h3>Scalable Architecture Patterns</h3>
-        <p>Load balancing, horizontal scaling, database sharding, caching strategies (Redis, CDN), message queues, event-driven architecture.</p>
-        <div class="fund-tags"><span class="ftag-sys">Scalability</span><span class="ftag-sys">Caching</span><span class="ftag-sys">MQ</span></div>
-      </a>
-      <a href="https://github.com/amarnathresearch/system-design" target="_blank" rel="noopener" class="fund-card reveal">
-        <span class="fund-icon">&#x1F512;</span>
-        <h3>Security &amp; High Availability</h3>
-        <p>Encryption at rest/transit, OAuth2/JWT, rate limiting, circuit breakers. CAP theorem trade-offs, replication, failover strategies.</p>
-        <div class="fund-tags"><span class="ftag-sys">HA</span><span class="ftag-sys">Security</span><span class="ftag-sys">CAP</span></div>
-      </a>
-      <a href="https://github.com/amarnathresearch/system-design" target="_blank" rel="noopener" class="fund-card reveal">
-        <span class="fund-icon">&#x1F5C4;&#xFE0F;</span>
-        <h3>Database Design &amp; Data Modeling</h3>
-        <p>SQL vs NoSQL, normalization, indexing strategies, vector databases (Pinecone, Weaviate), ACID vs BASE, query optimization.</p>
-        <div class="fund-tags"><span class="ftag-sys">SQL</span><span class="ftag-sys">NoSQL</span><span class="ftag-sys">Vector DB</span></div>
-      </a>
-      <a href="https://github.com/amarnathresearch/system-design" target="_blank" rel="noopener" class="fund-card reveal">
-        <span class="fund-icon">&#x1F310;</span>
-        <h3>API Design &amp; Microservices</h3>
-        <p>REST vs GraphQL, gRPC, API versioning, service mesh, distributed tracing, contract-first design with OpenAPI.</p>
-        <div class="fund-tags"><span class="ftag-sys">REST</span><span class="ftag-sys">GraphQL</span><span class="ftag-sys">gRPC</span></div>
-      </a>
-      <a href="https://github.com/amarnathresearch/system-design" target="_blank" rel="noopener" class="fund-card reveal">
-        <span class="fund-icon">&#x1F916;</span>
-        <h3>ML System Design</h3>
-        <p>Feature stores, model serving (ONNX, TorchServe), A/B testing, canary deployments, MLflow pipelines, GPU-optimized inference.</p>
-        <div class="fund-tags"><span class="ftag-sys">MLOps</span><span class="ftag-sys">Serving</span><span class="ftag-sys">A/B</span></div>
-      </a>
-      <a href="https://github.com/amarnathresearch/system-design" target="_blank" rel="noopener" class="fund-card reveal">
-        <span class="fund-icon">&#x1F4CA;</span>
-        <h3>UML &amp; Design Patterns</h3>
-        <p>Class, sequence, and deployment diagrams. GoF patterns &mdash; Factory, Observer, Strategy, Decorator. SOLID principles and clean architecture.</p>
-        <div class="fund-tags"><span class="ftag-sys">UML</span><span class="ftag-sys">SOLID</span><span class="ftag-sys">GoF</span></div>
-      </a>
-    </div>
-
-    <!-- Operating Systems -->
-    <div class="fund-category-title reveal">Operating Systems &amp; Distributed Systems</div>
-    <div class="fund-grid">
-      <a href="https://github.com/amarnathresearch/os-concepts" target="_blank" rel="noopener" class="fund-card reveal">
-        <span class="fund-icon">&#x2699;&#xFE0F;</span>
-        <h3>Process &amp; Thread Management</h3>
-        <p>Process lifecycle, context switching, thread pools, green threads. Concurrency models: fork-join, actor model, CSP.</p>
-        <div class="fund-tags"><span class="ftag-os">Processes</span><span class="ftag-os">Threads</span><span class="ftag-os">Concurrency</span></div>
-      </a>
-      <a href="https://github.com/amarnathresearch/os-concepts" target="_blank" rel="noopener" class="fund-card reveal">
-        <span class="fund-icon">&#x1F9EE;</span>
-        <h3>Memory Management</h3>
-        <p>Virtual memory, paging, segmentation, TLB, cache hierarchies (L1/L2/L3). Memory-mapped I/O, NUMA-aware allocation for GPU workloads.</p>
-        <div class="fund-tags"><span class="ftag-os">Virtual Memory</span><span class="ftag-os">Paging</span><span class="ftag-os">Cache</span></div>
-      </a>
-      <a href="https://github.com/amarnathresearch/os-concepts" target="_blank" rel="noopener" class="fund-card reveal">
-        <span class="fund-icon">&#x1F510;</span>
-        <h3>Synchronization &amp; Deadlocks</h3>
-        <p>Mutexes, semaphores, monitors, read-write locks. Deadlock detection/prevention (Banker's algorithm). Lock-free data structures.</p>
-        <div class="fund-tags"><span class="ftag-os">Mutex</span><span class="ftag-os">Semaphore</span><span class="ftag-os">Lock-free</span></div>
-      </a>
-      <a href="https://github.com/amarnathresearch/os-concepts" target="_blank" rel="noopener" class="fund-card reveal">
-        <span class="fund-icon">&#x1F4E1;</span>
-        <h3>Distributed Consensus &amp; Networking</h3>
-        <p>Raft, Paxos, gossip protocols, vector clocks. TCP/UDP internals, socket programming, WebRTC/WebSocket for real-time systems.</p>
-        <div class="fund-tags"><span class="ftag-os">Raft</span><span class="ftag-os">Paxos</span><span class="ftag-os">TCP</span></div>
-      </a>
-      <a href="https://github.com/amarnathresearch/os-concepts" target="_blank" rel="noopener" class="fund-card reveal">
-        <span class="fund-icon">&#x1F4E6;</span>
-        <h3>Containers &amp; Orchestration</h3>
-        <p>Docker internals (cgroups, namespaces), Kubernetes scheduling, pod lifecycle, resource quotas, HPA for ML inference workloads.</p>
-        <div class="fund-tags"><span class="ftag-os">Docker</span><span class="ftag-os">K8s</span><span class="ftag-os">cgroups</span></div>
-      </a>
-      <a href="https://github.com/amarnathresearch/os-concepts" target="_blank" rel="noopener" class="fund-card reveal">
-        <span class="fund-icon">&#x1F4BE;</span>
-        <h3>File Systems &amp; I/O</h3>
-        <p>Disk scheduling, journaling, RAID levels, I/O multiplexing (epoll, kqueue). Object storage (S3) for ML artifact management.</p>
-        <div class="fund-tags"><span class="ftag-os">I/O</span><span class="ftag-os">RAID</span><span class="ftag-os">S3</span></div>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- TECH STACK -->
-<section id="techstack">
-  <div class="container">
-    <div class="reveal">
-      <div class="section-label">06 &mdash; Stack</div>
-      <h2 class="section-heading">Technical Toolkit</h2>
-    </div>
-    <div class="stack-section-grid reveal">
-      <div class="stack-category">
-        <h3>Languages</h3>
-        <div class="stack-items">
-          <span class="stack-chip">Python (2016+)</span>
-          <span class="stack-chip">Java (2007+)</span>
-          <span class="stack-chip">JavaScript (2019+)</span>
-          <span class="stack-chip">MATLAB (2013+)</span>
-        </div>
-      </div>
-      <div class="stack-category">
-        <h3>AI / ML Frameworks</h3>
-        <div class="stack-items">
-          <span class="stack-chip">PyTorch</span>
-          <span class="stack-chip">TensorFlow</span>
-          <span class="stack-chip">Keras</span>
-          <span class="stack-chip">Transformers / HF</span>
-          <span class="stack-chip">Scikit-learn</span>
-        </div>
-      </div>
-      <div class="stack-category">
-        <h3>Agentic AI / LLM</h3>
-        <div class="stack-items">
-          <span class="stack-chip">LangGraph</span>
-          <span class="stack-chip">LangChain</span>
-          <span class="stack-chip">LangSmith</span>
-          <span class="stack-chip">OpenClaw</span>
-          <span class="stack-chip">Multi-Agent Orchestration</span>
-        </div>
-      </div>
-      <div class="stack-category">
-        <h3>Full Stack</h3>
-        <div class="stack-items">
-          <span class="stack-chip">FastAPI</span>
-          <span class="stack-chip">Flask</span>
-          <span class="stack-chip">ReactJS</span>
-          <span class="stack-chip">REST</span>
-          <span class="stack-chip">GraphQL</span>
-          <span class="stack-chip">WebRTC</span>
-          <span class="stack-chip">WebSockets</span>
-        </div>
-      </div>
-      <div class="stack-category">
-        <h3>Cloud &amp; DevOps</h3>
-        <div class="stack-items">
-          <span class="stack-chip">AWS</span>
-          <span class="stack-chip">Docker</span>
-          <span class="stack-chip">Kubernetes</span>
-          <span class="stack-chip">MLflow</span>
-          <span class="stack-chip">CI/CD</span>
-        </div>
-      </div>
-      <div class="stack-category">
-        <h3>Databases</h3>
-        <div class="stack-items">
-          <span class="stack-chip">PostgreSQL</span>
-          <span class="stack-chip">MongoDB</span>
-          <span class="stack-chip">MySQL</span>
-          <span class="stack-chip">Pinecone</span>
-          <span class="stack-chip">Weaviate</span>
-          <span class="stack-chip">ChromaDB</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- DEMOS & PROJECTS -->
-<section class="section-alt" id="demos">
-  <div class="container">
-    <div class="reveal">
-      <div class="section-label">07 &mdash; Demos</div>
-      <h2 class="section-heading">Live Demos &amp; Projects</h2>
-      <p class="section-intro">Interactive proof-of-concepts showcasing applied AI capabilities and engineering depth.</p>
-    </div>
-    <div class="demos-grid">
-      <a href="https://github.com/amarnathresearch/multi-agent-rag" target="_blank" rel="noopener" class="demo-card reveal">
-        <span class="demo-tag">LangGraph &middot; Multi-Agent</span>
-        <h3>Multi-Agent RAG Pipeline</h3>
-        <p>Autonomous research agents that retrieve, synthesize, and critique domain-specific documents in real-time.</p>
-        <div class="demo-stack"><span>LangGraph</span><span>LangSmith</span><span>ChromaDB</span></div>
-      </a>
-      <a href="https://github.com/amarnathresearch/agentic-workflow-engine" target="_blank" rel="noopener" class="demo-card reveal">
-        <span class="demo-tag">LangChain &middot; Automation</span>
-        <h3>Agentic Workflow Engine</h3>
-        <p>LLM-powered orchestration for enterprise document processing with human-in-the-loop validation.</p>
-        <div class="demo-stack"><span>LangChain</span><span>FastAPI</span><span>Redis</span></div>
-      </a>
-      <a href="https://github.com/amarnathresearch/retinal-segmentation" target="_blank" rel="noopener" class="demo-card reveal">
-        <span class="demo-tag">PyTorch &middot; Computer Vision</span>
-        <h3>HMS-VesselNet Demo</h3>
-        <p>Interactive retinal vessel segmentation with hierarchical multi-scale attention visualization.</p>
-        <div class="demo-stack"><span>PyTorch</span><span>Gradio</span><span>ONNX</span></div>
-      </a>
-      <a href="https://github.com/amarnathresearch/tprm-agents" target="_blank" rel="noopener" class="demo-card reveal">
-        <span class="demo-tag">CrewAI &middot; Risk Analysis</span>
-        <h3>TPRM Multi-Agent System</h3>
-        <p>Autonomous agents for third-party risk assessment, compliance monitoring, and report generation.</p>
-        <div class="demo-stack"><span>CrewAI</span><span>LangGraph</span><span>Pinecone</span></div>
-      </a>
-      <a href="https://github.com/amarnathresearch/ocr-pipeline" target="_blank" rel="noopener" class="demo-card reveal">
-        <span class="demo-tag">OCR &middot; NLP</span>
-        <h3>Document Intelligence Pipeline</h3>
-        <p>End-to-end OCR and NLP pipeline for automated content extraction from unstructured documents.</p>
-        <div class="demo-stack"><span>Tesseract</span><span>spaCy</span><span>AWS Textract</span></div>
-      </a>
-      <a href="https://github.com/amarnathresearch/llm-evaluation" target="_blank" rel="noopener" class="demo-card reveal">
-        <span class="demo-tag">LangSmith &middot; Eval</span>
-        <h3>LLM Evaluation Framework</h3>
-        <p>Custom evaluation harness for benchmarking RAG quality, hallucination rates, and latency across models.</p>
-        <div class="demo-stack"><span>LangSmith</span><span>Ragas</span><span>W&amp;B</span></div>
-      </a>
-      <a href="https://sereno.ivislabs.in/" target="_blank" rel="noopener" class="demo-card reveal">
-        <span class="demo-tag">WebRTC &middot; Real-Time</span>
-        <h3>Sereno &mdash; Communication Platform</h3>
-        <p>Real-time messaging, voice, and video platform optimized for low-latency communication across devices.</p>
-        <div class="demo-stack"><span>ReactJS</span><span>Flask</span><span>WebRTC</span><span>WebSocket</span></div>
-      </a>
-      <a href="https://codeidea.in/" target="_blank" rel="noopener" class="demo-card reveal">
-        <span class="demo-tag">EdTech &middot; Startup (Acquired)</span>
-        <h3>Codeidea.in &mdash; Competitive Coding</h3>
-        <p>Algorithm visualizations, real-time problem-solving environments, and university hackathons for 500+ students.</p>
-        <div class="demo-stack"><span>FastAPI</span><span>Flask</span><span>Python</span><span>AWS</span></div>
-      </a>
-    </div>
+    <div id="publications-list" class="publications-list"></div>
   </div>
 </section>
 
@@ -524,7 +75,6 @@
   <div class="container">
     <div class="footer-grid">
       <div class="reveal">
-        <div class="section-label">08 &mdash; Contact</div>
         <h2 class="footer-heading">Let's Build<br>Something Real<span class="accent-dot">.</span></h2>
         <p class="footer-sub">Open to Principal AI Architect &amp; Head of AI Research roles at product companies.</p>
         <a href="https://youtu.be/P0bKlMIguBg?si=esQScCbuJu7UuIIq" target="_blank" rel="noopener" class="audio-btn">
@@ -542,15 +92,14 @@
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
             github.com/amarnathresearch
           </a>
-          <a href="https://amarnathresearch.com" class="footer-link">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-            amarnathresearch.com
+          <a href="https://www.linkedin.com/in/amarnathresearch/" target="_blank" rel="noopener" class="footer-link">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg>
+            linkedin.com/in/amarnathresearch
           </a>
           <span class="footer-link">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
             Bengaluru, India
           </span>
-
         </div>
       </div>
     </div>
@@ -561,6 +110,6 @@
   </div>
 </footer>
 
-<script src="script.js"></script>
+<script src="graph.js"></script>
 </body>
 </html>
