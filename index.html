@@ -352,6 +352,41 @@ section { padding: var(--section-gap) 0; }
 .demo-stack { display: flex; gap: 8px; flex-wrap: wrap; margin-top: auto; }
 .demo-stack span { font-family: var(--font-mono); font-size: 12px; padding: 4px 9px; border-radius: 4px; background: var(--accent-dim); color: var(--accent); }
 
+/* ========== HAMMERING INFO ========== */
+.hammer-section { padding: 60px 0; }
+.hammer-container { max-width: 900px; margin: 0 auto; }
+.hammer-title { font-family: var(--font-display); font-size: clamp(32px, 5vw, 56px); font-weight: 700; margin-bottom: 24px; color: var(--accent-warm); }
+.hammer-subtitle { font-size: 18px; color: var(--text-secondary); margin-bottom: 48px; line-height: 1.8; }
+.hammer-card {
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px;
+  padding: 40px; margin-bottom: 28px; transition: all 0.3s;
+  border-left: 4px solid var(--accent-warm);
+}
+.hammer-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 16px; color: var(--text-primary); }
+.hammer-card p { font-size: 16px; line-height: 1.8; color: var(--text-secondary); margin-bottom: 12px; }
+.hammer-card strong { color: var(--accent); }
+.hammer-list { list-style: none; padding-left: 0; margin: 20px 0; }
+.hammer-list li {
+  font-size: 16px; line-height: 1.8; color: var(--text-secondary);
+  margin-bottom: 14px; padding-left: 32px; position: relative;
+}
+.hammer-list li::before {
+  content: '→'; position: absolute; left: 0; color: var(--accent-warm);
+  font-weight: 700; font-size: 18px;
+}
+.hammer-analogy {
+  background: rgba(252, 196, 92, 0.08); border: 1px solid rgba(252, 196, 92, 0.2);
+  border-radius: 10px; padding: 24px; margin: 24px 0;
+  font-size: 15px; font-style: italic; color: var(--text-secondary);
+  border-left: 4px solid var(--accent-warm);
+}
+.hammer-cta {
+  display: inline-block; margin-top: 24px; padding: 14px 32px;
+  background: var(--accent-warm-dim); color: var(--accent-warm); border: 1px solid rgba(252, 196, 92, 0.3);
+  border-radius: 8px; font-weight: 600; font-size: 16px; transition: all 0.3s; cursor: pointer;
+}
+.hammer-cta:hover { background: var(--accent-warm); color: var(--bg-primary); border-color: var(--accent-warm); }
+
 /* ========== FOOTER ========== */
 .footer { border-top: 1px solid var(--border); padding: 80px 0 48px; }
 .footer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; margin-bottom: 64px; }
@@ -429,6 +464,7 @@ section { padding: var(--section-gap) 0; }
       <li><a href="#experience" onclick="closeMenu()">Experience</a></li>
       <li><a href="#fundamentals" onclick="closeMenu()">Fundamentals</a></li>
       <li><a href="#techstack" onclick="closeMenu()">Tech Stack</a></li>
+      <li><a href="#hammering" onclick="closeMenu()">For Everyone</a></li>
       <li><a href="#demos" onclick="closeMenu()">Demos</a></li>
       <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
     </ul>
@@ -691,11 +727,75 @@ section { padding: var(--section-gap) 0; }
   </div>
 </section>
 
+<!-- HAMMERING INFO FOR DUMMIES -->
+<section class="hammer-section" id="hammering">
+  <div class="container">
+    <div class="hammer-container">
+      <div class="reveal">
+        <div class="section-label">06 &mdash; For Everyone</div>
+        <h2 class="hammer-title">Hammering Info for Dummies</h2>
+        <p class="hammer-subtitle">Understanding RAG Systems the Simple Way — A guide for those who prefer clarity over jargon.</p>
+      </div>
+
+      <div class="hammer-card reveal">
+        <h3>What Is RAG? (Really, Really Simple)</h3>
+        <p>Think of RAG like asking someone to look something up in a book before answering your question, instead of relying only on their memory.</p>
+        <p><strong>RAG = Retrieval-Augmented Generation.</strong> In plain English: the AI reads your documents first, then answers your questions based on what's written there.</p>
+        <div class="hammer-analogy">
+          "You ask your doctor a question about your test results. Instead of going from memory, they pull out your file, read it carefully, and then answer based on the facts. That's RAG."
+        </div>
+      </div>
+
+      <div class="hammer-card reveal">
+        <h3>Why Should You Care?</h3>
+        <ul class="hammer-list">
+          <li><strong>Accuracy:</strong> The AI doesn't guess. It reads your actual documents.</li>
+          <li><strong>Privacy:</strong> Your documents stay on your computer. No cloud, no sending files elsewhere.</li>
+          <li><strong>Trust:</strong> You can see where the answer came from — which page, which file.</li>
+          <li><strong>No subscriptions:</strong> Once set up, it works without monthly fees.</li>
+        </ul>
+        <p style="margin-top: 20px; font-size: 15px; color: var(--text-muted);">Especially useful if you're managing family documents, medical records, financial papers, or business files.</p>
+      </div>
+
+      <div class="hammer-card reveal">
+        <h3>How Does It Actually Work? (Three Steps)</h3>
+        <div class="hammer-list" style="list-style: decimal; padding-left: 24px; margin: 20px 0;">
+          <li style="margin-bottom: 18px;">
+            <strong>Preparation:</strong> You give the system your documents (PDFs, Word docs, etc.). It reads them once, converts the text into a special format, and saves everything locally.
+            <div class="hammer-analogy" style="margin-top: 12px;">Like organizing your filing cabinet for the first time — takes effort upfront, but then everything is organized.</div>
+          </li>
+          <li style="margin-bottom: 18px;">
+            <strong>You Ask a Question:</strong> You ask the system something like "What are my treatment options?" or "What does my policy say about refunds?"
+          </li>
+          <li style="margin-bottom: 0;">
+            <strong>The System Answers:</strong> It finds the most relevant parts of your documents and gives you an answer with the source. You can verify it against the original document.
+            <div class="hammer-analogy" style="margin-top: 12px;">Like a librarian who finds the exact book, page, and paragraph that answers your question.</div>
+          </li>
+        </div>
+      </div>
+
+      <div class="hammer-card reveal">
+        <h3>Real-Life Examples</h3>
+        <p><strong>Medical:</strong> Upload all your medical reports and ask "Has my cholesterol improved?" The system reads all your lab reports and gives you facts.</p>
+        <p style="margin-top: 14px;"><strong>Financial:</strong> Upload your insurance documents and ask "What happens if I can't pay?" Find the exact clause in your policy.</p>
+        <p style="margin-top: 14px;"><strong>Family Records:</strong> Upload grandchild's school deeds and ask "What are the academic requirements?" Get instant answers without calling.</p>
+      </div>
+
+      <div class="hammer-card reveal">
+        <h3>The Biggest Benefit?</h3>
+        <p>You're no longer at the mercy of your memory. You have a system that reliably reads, understands, and retrieves information from your documents whenever you need it.</p>
+        <p style="margin-top: 16px;">It's like having a patient librarian in your home who never gets tired, never forgets, and always tells you the source.</p>
+        <a href="/ragfordummy/" class="hammer-cta">Learn More →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- DEMOS & PROJECTS -->
 <section class="section-alt" id="demos">
   <div class="container">
     <div class="reveal">
-      <div class="section-label">06 &mdash; Demos</div>
+      <div class="section-label">07 &mdash; Demos</div>
       <h2 class="section-heading">Live Demos &amp; Projects</h2>
       <p class="section-intro">Interactive proof-of-concepts showcasing applied AI capabilities and engineering depth.</p>
     </div>
