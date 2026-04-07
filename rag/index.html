@@ -465,7 +465,8 @@ section { padding: var(--section-gap) 0; }
       <li><a href="#fundamentals" onclick="closeMenu()">Fundamentals</a></li>
       <li><a href="#techstack" onclick="closeMenu()">Tech Stack</a></li>
       <li><a href="#hammering" onclick="closeMenu()">For Everyone</a></li>
-      <li><a href="#demos" onclick="closeMenu()">Demos</a></li>
+      <li><a href="#rag-video" onclick="closeMenu()">RAG Demo</a></li>
+      <li><a href="#demos" onclick="closeMenu()">Projects</a></li>
       <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
     </ul>
     <button class="nav-hamburger" id="hamburger" aria-label="Menu">
@@ -788,6 +789,38 @@ section { padding: var(--section-gap) 0; }
         <p style="margin-top: 16px;">It's like having a patient librarian in your home who never gets tired, never forgets, and always tells you the source.</p>
         <a href="/ragfordummy/" class="hammer-cta">Learn More →</a>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- RAG VIDEO DEMO -->
+<section id="rag-video">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">06b &mdash; Video Demo</div>
+      <h2 class="section-heading">RAG for Dummies in Action</h2>
+      <p class="section-intro">See how Retrieval-Augmented Generation works in a real, live demonstration. Watch the system retrieve information from documents and generate answers.</p>
+    </div>
+    
+    <div class="reveal" style="position: relative; width: 100%; background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center;">
+      <video width="100%" height="100%" controls style="width: 100%; height: 100%; object-fit: cover;">
+        <source src="ragfordummy/final_demo.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+
+    <div class="reveal" style="margin-top: 32px; padding: 32px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; border-left: 4px solid var(--accent);">
+      <p style="font-size: 16px; line-height: 1.8; color: var(--text-secondary); margin-bottom: 20px;">
+        In this demo, you'll see the complete RAG workflow: uploading a document, asking specific questions, and getting answers grounded in the actual content with source attribution.
+      </p>
+      <p style="font-size: 16px; line-height: 1.8; color: var(--text-secondary); margin-bottom: 24px;">
+        <strong>🚀 Try it yourself:</strong> No installation required. Visit our live interactive demo on HuggingFace Spaces and practice with your own documents instantly.
+      </p>
+      <a href="https://huggingface.co/spaces/amarnathresearch/rag-for-dummies" target="_blank" rel="noopener" class="btn btn-primary">Try Live Demo on HuggingFace Spaces →</a>
+    </div>
+
+    <div class="reveal" style="margin-top: 28px;">
+      <a href="/ragfordummy/" class="btn btn-outline" style="display: inline-block;">Learn the Technical Details →</a>
     </div>
   </div>
 </section>
